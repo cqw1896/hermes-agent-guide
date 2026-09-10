@@ -1577,32 +1577,37 @@ website-monitor 网站可用性监控        */5 * * * *     ✓ 启用    5分�
 # 手动执行一个任务（调试用）
 $ hermes cron run daily-news
 
-# 启用/禁用任务
-$ hermes cron enable daily-news
-$ hermes cron disable weekly-report
+# 恢复/暂停任务
+$ hermes cron resume daily-news
+$ hermes cron pause weekly-report
 
-# 查看任务日志
-$ hermes cron logs daily-news --tail 20
+# 查看任务状态
+$ hermes cron status daily-news
 
-# 验证配置文件语法
-$ hermes cron validate
+# 查看任务列表
+$ hermes cron list
 
-# 实时监控任务执行
-$ hermes cron logs --follow
+# 查看所有任务状态
+$ hermes cron status
 ```
 
 ### 8.5 调试技巧
 
 定时任务出问题时，按以下步骤排查：
 
-**步骤1：验证配置语法**
+**步骤1：检查任务列表**
 
 ```bash
-$ hermes cron validate
+$ hermes cron list
 
-✅ 配置文件语法正确
+  任务列表
+  daily-news 每日新闻推送           0 8 * * *       ✓ 启用
+  weekly-report 周报生成           0 9 * * 1       ✓ 启用
+  backup-db 数据库备份             0 2 * * *       ✓ 启用
+  website-monitor 网站可用性监控    */5 * * * *     ✓ 启用
+  archive-old-logs 日志归档        0 3 * * 0       ⏸ 已暂停
   任务数: 5
-  启用: 4, 禁用: 1
+  启用: 4, 暂停: 1
   警告: 
     - 任务 "backup-db" 没有设置超时时间，将使用默认值 300 秒
 ```
@@ -1622,14 +1627,14 @@ $ hermes cron run daily-news --verbose
 任务完成，总计耗时 3.7s
 ```
 
-**步骤3：检查日志**
+**步骤3：检查状态**
 
 ```bash
-# 查看最近失败的执行
-$ hermes cron logs --status failed --last 24h
+# 查看最近失败的任务状态
+$ hermes cron status --filter failed
 
-# 查看特定任务的详细日志
-$ hermes cron logs website-monitor --tail 50
+# 查看特定任务的详细状态
+$ hermes cron status website-monitor
 ```
 
 **常见问题：**

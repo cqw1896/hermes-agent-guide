@@ -509,7 +509,7 @@ Hermes 采用了"渐进式加载"的机制来管理技能。技能不是一次�
 | **安装复杂度** | 3 条命令 + 交互式配置 | 2 条命令 + 手动配置 |
 | **社区文化** | "养马" | "养虾" |
 | **自托管** | 完全支持 | 完全支持 |
-| **数据迁移** | 支持 `hermes migrate openclaw` | 原生支持 |
+| **数据迁移** | 支持 `hermes claw migrate` | 原生支持 |
 
 > **常见问题**
 >
@@ -561,7 +561,7 @@ Hermes 的技能系统是"个人专属"模式。Agent 自动创建的技能，�
 
 ```bash
 # 从 OpenClaw 迁移到 Hermes，只需要一条命令
-hermes migrate openclaw
+hermes claw migrate
 
 # 系统会提示你确认迁移的内容
 # - 配置文件转换
@@ -756,7 +756,7 @@ Hermes 的快速崛起，不是偶然，而是多个因素共振的结果。
 
 **因素三：迁移成本低。**
 
-`hermes migrate openclaw` 这条命令，是 Hermes 增长策略中一个极其精妙的设计。
+`hermes claw migrate` 这条命令，是 Hermes 增长策略中一个极其精妙的设计。
 
 它解决了一个核心问题：**如何让用户尝试新产品时没有心理负担？**
 
@@ -850,7 +850,7 @@ OpenClaw 的创始人 Peter 在一个播客访谈中被问到如何看待 Hermes
 
 **事件二：Hermes 官方支持 OpenClaw 迁移。**
 
-`hermes migrate openclaw` 这个命令的设计，本身就传达了一个信号：Hermes 不希望你"抛弃"OpenClaw，而是希望你"在需要的时候可以平滑过渡"。
+`hermes claw migrate` 这个命令的设计，本身就传达了一个信号：Hermes 不希望你"抛弃"OpenClaw，而是希望你"在需要的时候可以平滑过渡"。
 
 **事件三：双持用户的增多。**
 

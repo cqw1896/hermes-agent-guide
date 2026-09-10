@@ -1050,7 +1050,7 @@ Hermes 在中文内容方面有明显的优势——本书的存在就是一个�
 | 需要移动应用 | OpenClaw | 原生 iOS/Android 应用 |
 | 追求效率部署 | Hermes | curl 一键安装，开箱即用 |
 | 长期养成助手 | Hermes | 自学习、用户画像、Skill 进化 |
-| 已有大量 OpenClaw 配置 | 可迁移到 Hermes | hermes migrate 命令支持 |
+| 已有大量 OpenClaw 配置 | 可迁移到 Hermes | hermes claw migrate 命令支持 |
 | 数据科学家 | Hermes | Python 生态，数据处理能力强 |
 | 前端开发者 | OpenClaw | TypeScript 生态，上手更快 |
 | 安全敏感型 | OpenClaw | 沙箱安全体系更完善 |
@@ -1189,25 +1189,25 @@ AI/ML 工程师通常已经熟悉 PyTorch、Hugging Face、LangChain 等 Python 
 - [ ] 我是否需要并行运行两个系统一段时间？
 ```
 
-### 7.2 hermes migrate openclaw 命令详解
+### 7.2 hermes claw migrate 命令详解
 
 Hermes 提供了官方的迁移工具，可以自动迁移大部分内容。
 
 ```bash
 # 查看迁移工具帮助
-$ hermes migrate --help
+$ hermes claw migrate --help
 
 # 预览迁移内容（不实际执行）
-$ hermes migrate openclaw --preview --source ~/.openclaw
+$ hermes claw migrate openclaw --preview --source ~/.openclaw
 
 # 执行迁移
-$ hermes migrate openclaw \
+$ hermes claw migrate openclaw \
     --source ~/.openclaw \
     --target ~/.hermes \
     --include skills,config,history
 
 # 迁移选项
-$ hermes migrate openclaw --help
+$ hermes claw migrate openclaw --help
 Options:
   --source PATH           OpenClaw 配置目录 [默认: ~/.openclaw]
   --target PATH           Hermes 目标目录 [默认: ~/.hermes]
@@ -1246,10 +1246,10 @@ hermes --version
 
 ```bash
 # 预览迁移内容
-hermes migrate openclaw --preview --source ~/.openclaw
+hermes claw migrate openclaw --preview --source ~/.openclaw
 
 # 如果预览结果满意，执行迁移
-hermes migrate openclaw --source ~/.openclaw --backup
+hermes claw migrate openclaw --source ~/.openclaw --backup
 ```
 
 **步骤4：验证迁移结果**
@@ -1348,7 +1348,7 @@ hermes --version
 hermes chat "Hello"
 
 # 2. 模型连接
-hermes model test
+hermes model
 
 # 3. 工具功能
 hermes tool test web_search
@@ -1382,7 +1382,7 @@ hermes workflow test <important_workflow>
 
 ```
 原因：Hermes 和 OpenClaw 的配置结构不同
-解决：使用 hermes migrate 自动转换基础配置，手动调整高级配置
+解决：使用 hermes claw migrate 自动转换基础配置，手动调整高级配置
 参考：迁移工具的 --preview 选项可以先看差异
 ```
 
